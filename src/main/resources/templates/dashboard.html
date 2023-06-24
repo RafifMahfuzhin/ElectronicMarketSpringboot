@@ -1,0 +1,193 @@
+    <!DOCTYPE html>
+    <html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Registration and Login System</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous">
+        <link rel="stylesheet" th:href="@{css/styles.css}">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    </head>
+    <body>
+
+        <div th:fragment="content">
+            <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".csv" style="background-color: rgb(50, 25, 66);">
+                <button type="submit">Upload Hasil Analisa</button>
+            </form>
+            <ul class="box-info">
+                <li>
+                    <i class='bx bxs-user' ></i>
+                    <span class="text">
+                        <h3 th:text="${totalRoleUsers}"></h3>
+                        <p>Total User</p>
+                    </span>
+                </li>
+                <li>
+                    <i class='bx bx-store' ></i>
+                    <span class="text">
+                        <h3 id="total-items" th:text="${totalSalary}"></h3>
+                        <p>Total Item</p>
+                    </span>
+                </li>
+                <li>
+                    <i class='bx bxs-cart' ></i>
+                    <span class="text">
+                        <h3 th:text="${totalSales}"></h3>
+                        <p>Total Sales</p>
+                    </span>
+                </li>
+                <li>
+                    <i class='bx bxs-cart' ></i>
+                    <span class="text">
+                        <h3 th:text="${bestSales}"></h3>
+                        <p>Top Selling</p>
+                    </span>
+                </li>
+                <li>
+                    <i class='bx bxs-cart' ></i>
+                    <span class="text">
+                        <h3 th:text="${bestSalary}"></h3>
+                        <p>Top Income</p>
+                    </span>
+                </li>
+
+                <li>
+                    <i class='bx bxs-cart' ></i>
+                    <span class="text">
+                        <h3 th:text="${bestView}"></h3>
+                        <p>Top View</p>
+                    </span>
+                </li>
+                
+            </ul>
+            <div id="chartContainer" style="background-color: #060714; box-shadow: 0 0 25px yellow;">
+                <canvas th:id="lineChart" style="margin-top: 30px;"></canvas>
+                
+            </div>
+            <div id="chartContainer" style="background-color: #060714; box-shadow: 0 0 25px yellow;">
+                <canvas th:id="lineChart2" style="margin-top: 30px;"></canvas>
+            </div>
+            <div class="container-content-list">
+                
+
+                <h1>Data Cluster 1</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>View</th>
+                            <th>Quantity</th>
+                            <th>Total Sales</th>
+                            <th>Total Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="csvData : ${csvCluster0}">
+                            <td th:text="${csvData.name}"></td>
+                            <td th:text="${csvData.view}"></td>
+                            <td th:text="${csvData.quantity}"></td>
+                            <td th:text="${csvData.totalsales}"></td>
+                            <td th:text="${csvData.totalsalary}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <h1>Data Cluster 2</h1>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>View</th>
+                            <th>Quantity</th>
+                            <th>Total Sales</th>
+                            <th>Total Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="csvData : ${csvCluster1}">
+                            <td th:text="${csvData.name}"></td>
+                            <td th:text="${csvData.view}"></td>
+                            <td th:text="${csvData.quantity}"></td>
+                            <td th:text="${csvData.totalsales}"></td>
+                            <td th:text="${csvData.totalsalary}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <h1>Data Cluster 3</h1>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>View</th>
+                            <th>Quantity</th>
+                            <th>Total Sales</th>
+                            <th>Total Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="csvData : ${csvCluster2}">
+                            <td th:text="${csvData.name}"></td>
+                            <td th:text="${csvData.view}"></td>
+                            <td th:text="${csvData.quantity}"></td>
+                            <td th:text="${csvData.totalsales}"></td>
+                            <td th:text="${csvData.totalsalary}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table id="data-table4">
+                    <h1>Data Cluster 4</h1>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>View</th>
+                            <th>Quantity</th>
+                            <th>Total Sales</th>
+                            <th>Total Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="csvData : ${csvCluster3}">
+                            <td th:text="${csvData.name}"></td>
+                            <td th:text="${csvData.view}"></td>
+                            <td th:text="${csvData.quantity}"></td>
+                            <td th:text="${csvData.totalsales}"></td>
+                            <td th:text="${csvData.totalsalary}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+            <div class="AvgViewData" style="display: none;">
+                <p id="view0" th:text="${avgView0}" style="display: none;"></p>
+                <p id="view1" th:text="${avgView1}" style="display: none;"></p>
+                <p id="view2" th:text="${avgView2}" style="display: none;"></p>
+                <p id="view3" th:text="${avgView3}" style="display: none;"></p>
+            </div>
+            <div class="AvgSalesData" style="display: none;">
+                <p id="sales0" th:text="${avgSales0}" style="display: none;"></p>
+                <p id="sales1" th:text="${avgSales1}" style="display: none;"></p>
+                <p id="sales2" th:text="${avgSales2}" style="display: none;"></p>
+                <p id="sales3" th:text="${avgSales3}" style="display: none;"></p>
+            </div>
+
+            <div class="AvgQuantityData" style="display: none;">
+                <p id="quantity0" th:text="${avgQuantity0}" style="display: none;"></p>
+                <p id="quantity1" th:text="${avgQuantity1}" style="display: none;"></p>
+                <p id="quantity2" th:text="${avgQuantity2}" style="display: none;"></p>
+                <p id="quantity3" th:text="${avgQuantity3}" style="display: none;"></p>
+            </div>
+
+            <div class="AvgSalaryData" style="display: none;">
+                <p id="salary0" th:text="${avgSalary0}" style="display: none;"></p>
+                <p id="salary1" th:text="${avgSalary1}" style="display: none;"></p>
+                <p id="salary2" th:text="${avgSalary2}" style="display: none;"></p>
+                <p id="salary3" th:text="${avgSalary3}" style="display: none;"></p>
+            </div>
+
+        </div>
+        <script th:src="@{/js/script.js}"></script>
+    </body>
+    </html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration and Login System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{css/styles.css}">
+  
+</head>
+<body>
+    <div th:fragment="content">
+
+        <div id="updateForm" style="display: none; color: white;" >
+            <h2>Update User</h2>
+            <form>
+                <input type="hidden" id="userId">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName">
+                <label for="email">Email:</label>
+                <input type="email" id="email">
+                <select id="roles">
+                    <option th:each="role : ${roles}" th:value="${role.name}" th:text="${role.name}"></option>
+                </select>
+
+
+                <button onclick="updateUser()">Save</button>
+                <button onclick="cancelUpdate()">Cancel</button>
+            </form>
+        </div>
+
+        <h2 style="color: white;">List of Registered Users</h2>
+        <div class="container-content-list">
+            
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.id}"></td>
+                        <td th:text="${user.firstName}"></td>
+                        <td th:text="${user.lastName}"></td>
+                        <td th:text="${user.email}"></td>
+                        <td th:text="${user.roles}"></td>
+                        <td class="actions" style="text-align: center;">
+                            
+                            <button onclick="confirmDelete(this)" th:data-user-email="${user.email}">Delete</button>
+                            <button onclick="loadUpdateForm(this)" th:data-user-id="${user.id}" th:data-user-firstname="${user.firstName}" th:data-user-lastname="${user.lastName}" th:data-user-email="${user.email}">Update</button>
+                        </td>
+                    </tr>           
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script th:src="@{/js/script.js}"></script>
+</body>
+</html>

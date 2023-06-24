@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Market</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" th:href="@{css/market.css}">
+    <script th:inline="javascript">
+        var items = /*[[${items}]]*/ [];
+    </script>
+</head>
+
+<body>
+    <div class="content-top" style="color:white; display: flex; justify-content: space-between;">
+        <a class="navbar-brand" href="#">Market</a>
+        <div>
+            <a class="navbar-brand" th:href="@{/logout}">Logout</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="content-bot">
+            <div class="content-right">
+                <img class="imgItem" th:src="@{/images/laptop.png}">
+            </div>
+
+            <div class="content-left">
+                <h1 class="name" style="font-size: 45px; text-align: center;"></h1>
+                <p>ini Adalah Deskripsi Produk Yang Dijual</p>
+                <h2 class="amount">Rp. <span></span></h2>
+                <button id="buyNowButton" style="width: 180px; height: 50px; margin-top: 20px;">Buy Now</button>
+                <div class="navigation">
+                    <button id="prevBtn" disabled>&lt;</button>
+                    <button id="nextBtn">&gt;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/js/market.js}"></script>
+</body>
+
+</html>

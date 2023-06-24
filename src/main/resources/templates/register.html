@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Registration and Login System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    
+<div class="container">
+	<h1>Registration</h1>
+	<div class="input">
+		<form method="post" role="form" th:action="@{/register/save}" th:object="${user}" onsubmit="return validateForm()">
+			<div class="firstName">
+				<input type="text" id="firstName" name="firstName" th:field="*{firstName}" placeholder="Enter Your First Name"/>
+			</div>
+			<div class="lastName">
+				<input type="text" id="lastName" name="lastName" th:field="*{lastName}" placeholder="Enter Your Last Name"/>
+			</div>
+            <div class="email">
+				<input type="text" id="email" name="email" th:field="*{email}" placeholder="Enter Your Email"/>
+			</div>
+			<div class="password">
+				<input type="password" id="password" name="password" th:field="*{password}" placeholder="Enter Your Password"/>
+			</div>
+			<div  class ="bottom" style="justify-content: center;">
+				<button  type="submit">Register</button>
+			</div>
+			<div class="tag">
+                <span>Already registered? <a th:href="@{/login}">Login here</a></span>
+			</div>
+		</form>
+	</div>
+</div>
+
+<script>
+    function showAlert(message, type) {
+        Swal.fire({
+            icon: type,
+            title: (type === 'success') ? 'Success' : 'Error',
+            text: message,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK'
+        });
+    }
+
+    $(document).ready(function() {
+        var errorMessage = /*[[${errorMessage}]]*/ '[[${errorMessage}]]';
+        var successMessage = /*[[${successMessage}]]*/ '[[${successMessage}]]';
+        if (errorMessage && errorMessage.trim() !== '') {
+            showAlert(errorMessage, 'error');
+        }
+        if (successMessage && successMessage.trim() !== '') {
+            showAlert(successMessage, 'success');
+            redirectToLogin();
+        }
+    });
+
+    function validateForm() {
+        var firstName = document.getElementById("firstName").value;
+        var lastName = document.getElementById("lastName").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+
+        if (firstName === '' || lastName === '' || email === '' || password === '') {
+            showAlert("Please Fill All Field", 'error');
+            return false;
+        }
+    }
+    function redirectToLogin() {
+        setTimeout(function() {
+            window.location.href = '/login'; 
+        }, 1500); 
+    }
+</script>
+
+
+</body>
+</html>
