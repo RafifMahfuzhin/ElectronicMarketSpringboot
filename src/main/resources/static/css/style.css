@@ -1,0 +1,152 @@
+body {
+	background-color: #060714;
+	font-family: Arial, sans-serif;
+	color: #ffffff;
+}
+
+.container {
+	position: absolute;
+	width: 300px;
+	background-color: #0C0C1E;
+	left: 50%;
+	top: 45%;
+	transform: translate(-50%, -50%);
+	border-radius: 10px;
+	box-shadow: 0 2px 20px rgba(120, 156, 3, 0.92);
+	opacity: 0;
+    animation-name: fadeIn; 
+    animation-duration: 2s; 
+    animation-delay: 0.8s; 
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0; 
+    }
+    to {
+        opacity: 1; 
+    }
+}
+
+.container h1 {
+	text-align: center;
+	font-size: 30px;
+	margin-top: 15px;
+	font-weight: bold;
+	color: #ffffff;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.container .input {
+	margin-top: 30px;
+}
+
+.container .email,
+.container .firstName,
+.container .lastName,
+.container .password {
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.container input[type="text"],
+.container input[type="password"] {
+	width: 90%;
+	padding: 10px;
+	border-radius: 10px;
+	border: 2px solid #324f7b;
+	text-align: center;
+	color: #ffffff;
+	background-color: #273b59;
+}
+
+.container .bottom {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 30px;
+}
+
+.container .bottom button {
+	width: 100px;
+	padding: 10px;
+	border-radius: 5px;
+	color: #ffffff;
+	font-weight: bold;
+	border: none;
+	cursor: pointer;
+}
+
+.container .bottom button[type="submit"] {
+	background-color: #0c367e;
+	margin-right: 14px;
+}
+
+.container .bottom button[type="button"] {
+	background-color: #b34c4c;
+	margin-left: 14px;
+}
+
+.container form .tag{
+	text-align: center;
+	font-weight: bold;
+	font-size: 15px;
+	margin-top: 30px;
+	color: whitesmoke;
+	text-shadow: 20px 20px 20px rgba(0, 0, 0, 0.5);
+	margin-bottom: 15px;
+}
+
+.container-main {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+}
+
+.container-main .sidebar {
+	background-color: #121c33;
+	width: 25%;
+}
+  
+.container-main .sidebar .home{
+	margin-top: 20px;
+	text-align: center;
+	margin-bottom: 70px;
+}
+
+.container-main .sidebar .home .homelogo{
+	width: 30%;
+	height: 30%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.container-main .sidebar .menu {
+    flex-grow: 1;
+	text-align: center;
+}
+
+.container-main .sidebar .menu .homelogo{
+	width: 30%;
+	height: 30%;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.container-main .content{
+	background-color: #1c273d;
+	width: 75%;
+}
+
+.navbar {
+	background-color: #343a40;
+	color: white;
+}
+
+.navbar a {
+	color: white;
+	text-decoration: none;
+	padding: 10px;
+}
+

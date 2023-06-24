@@ -1,0 +1,35 @@
+.sidebar {
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.menu-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e9ecef;
+    color: #333;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu-button:hover {
+    background-color: #dee2e6;
+}
+
+.content {
+    padding: 20px;
+}
+
+.content h2 {
+    margin-top: 0;
+}
+
+.content table {
+    margin-top: 20px;
+}
